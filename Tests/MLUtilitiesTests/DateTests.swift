@@ -34,6 +34,14 @@ final class DateTests: XCTestCase {
         XCTAssertEqual(test, 2)
     }
     
+    func testDate() {
+        let dateString = "1995-02-16"
+        let dateFormat = "yyyy-MM-dd"
+        
+        let test = Date.parse(dateString, format: dateFormat).date
+        XCTAssertEqual(test, 16)
+    }
+    
     /// Tests that the millisecondsSince1970 returns the correct number for:
     ///
     /// - = 2020-09-05 11:45:00 GMT-0400 (EDT)

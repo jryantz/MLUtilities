@@ -29,6 +29,15 @@ extension Date {
         return Calendar.current.component(.month, from: self)
     }
     
+    /// Returns the day as an Int.
+    ///
+    /// ```
+    /// Date("2021-06-19") -> 19
+    /// ```
+    var date: Int {
+        return Calendar.current.component(.day, from: self)
+    }
+    
     /// The time in milliseconds between the date value and 00:00:00 UTC on 1 January 1970.
     var millisecondsSince1970: Int {
         let ms = self.timeIntervalSince1970 * 1000.0
