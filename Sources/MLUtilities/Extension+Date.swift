@@ -29,6 +29,12 @@ extension Date {
         return Calendar.current.component(.month, from: self)
     }
     
+    /// The time in milliseconds between the date value and 00:00:00 UTC on 1 January 1970.
+    var millisecondsSince1970: Int {
+        let ms = self.timeIntervalSince1970 * 1000.0
+        return Int(ms.rounded())
+    }
+    
     /// Returns a string representation of the date with the provided format.
     ///
     /// Format Options:
