@@ -37,6 +37,91 @@ extension Date {
         return Calendar.current.component(.day, from: self)
     }
     
+    /// Returns the first moment of a given Date, as a Date.
+    var startOfDay: Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+    
+    /// Returns the first moment of the day following a given Date, as a Date.
+    var startOfNextDay: Date {
+        let calendar = Calendar.current
+        let nextDay = calendar.date(byAdding: .day, value: 1, to: self)
+        return calendar.startOfDay(for: nextDay!)
+    }
+    
+    /// Returns the first moment of the first weekday of a given Date, as a Date.
+    ///
+    /// The default value of `firstWeekday` varies by calendar and locale. Your 
+    /// app can reset this value.
+    ///
+    /// The weekday units are one-based. For Gregorian and ISO 8601 
+    /// calendars, `1` is Sunday.
+    var startOfWeek: Date {
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)
+        components.weekday = calendar.firstWeekday
+        let thisWeekday = calendar.date(from: components)
+        return calendar.startOfDay(for: thisWeekday!)
+    }
+    
+    /// Returns the first moment of the first weekday of the following week
+    /// of a given Date, as a Date.
+    ///
+    /// The default value of `firstWeekday` varies by calendar and locale. Your 
+    /// app can reset this value.
+    ///
+    /// The weekday units are one-based. For Gregorian and ISO 8601 
+    /// calendars, `1` is Sunday.
+    var startOfNextWeek: Date {
+        let calendar = Calendar.current
+        let nextMonth = calendar.date(byAdding: .weekOfYear, value: 1, to: startOfWeek)
+        return calendar.startOfDay(for: nextMonth!)
+    }
+    
+    /// Returns the first moment of the first day of the month of a given Date, 
+    /// as a Date.
+    var startOfMonth: Date {
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.calendar, .year, .month], from: self)
+        components.day = 1
+        let thisMonth = calendar.date(from: components)
+        return calendar.startOfDay(for: thisMonth!)
+    }
+    
+    /// Returns the first moment of the first day of the next month of a given Date,
+    /// as a Date.
+    var startOfNextMonth: Date {
+        let calendar = Calendar.current
+        let nextMonth = calendar.date(byAdding: .month, value: 1, to: startOfMonth)
+        return calendar.startOfDay(for: nextMonth!)
+    }
+    
+    /// Returns one month prior to the current Date, as a Date.
+    static var oneMonthAgo: Date {
+        let calendar = Calendar.current
+        let oneMonth = calendar.date(byAdding: .month, value: -1, to: Date())
+        return calendar.startOfDay(for: oneMonth!)
+    }
+    
+    /// Returns the first moment of the first day of the year of a given Date,
+    /// as a Date.
+    var startOfYear: Date {
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.calendar, .year], from: self)
+        components.month = 1
+        components.day = 1
+        let thisYear = calendar.date(from: components)
+        return calendar.startOfDay(for: thisYear!)
+    }
+    
+    /// Returns the first moment of the first day of the next year of a given Date,
+    /// as a Date.
+    var startOfNextYear: Date {
+        let calendar = Calendar.current
+        let nextYear = calendar.date(byAdding: .year, value: 1, to: startOfYear)
+        return calendar.startOfDay(for: nextYear!)
+    }
+    
     /// The time in milliseconds between the date value and 00:00:00 UTC on 1 January 1970.
     var millisecondsSince1970: Int {
         let ms = self.timeIntervalSince1970 * 1000.0
