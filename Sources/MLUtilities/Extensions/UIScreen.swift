@@ -1,5 +1,5 @@
 //
-//  Extension+UIScreen.swift
+//  UIScreen.swift
 //  
 //
 //  Created by Jon Yantz on 6/19/21.

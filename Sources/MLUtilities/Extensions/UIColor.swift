@@ -1,5 +1,5 @@
 //
-//  Extension+UIColor.swift
+//  UIColor.swift
 //  
 //
 //  Created by Jon Yantz on 6/19/21.
@@ -9,18 +9,14 @@
 import UIKit
 
 extension UIColor {
-    
     /// Returns a tuple containing the color components.
     ///
     /// ```
     /// UIColor() -> (r, g, b, a)
     /// ```
-    var rgba: (CGFloat, CGFloat, CGFloat, CGFloat) {
-        var r, g, b, a: CGFloat
-        (r, g, b, a) = (0, 0, 0, 0)
-        
+    var rgba: RGBA {
+        var (r, g, b, a): RGBA = (0, 0, 0, 0)
         self.getRed(&r, green: &g, blue: &b, alpha: &a)
-        
         return (r, g, b, a)
     }
     
@@ -47,7 +43,5 @@ extension UIColor {
         let (r, g, b, _) = self.rgba
         return "CGColor(red: \(r), green: \(g), blue: \(b), alpha: 1.0)"
     }
-    
 }
-
 #endif

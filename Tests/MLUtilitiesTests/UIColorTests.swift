@@ -12,7 +12,6 @@ import XCTest
 import UIKit
 
 final class UIColorTests: XCTestCase {
-    
     func testRGBA() {
         let (r, g, b, a) = UIColor.black.rgba
         
@@ -41,7 +40,5 @@ final class UIColorTests: XCTestCase {
         let test = UIColor.black.cgColorString
         XCTAssertEqual(test, "CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)")
     }
-    
 }
-
 #endif
