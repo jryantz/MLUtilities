@@ -8,7 +8,6 @@
 import Foundation
 
 extension Date {
-    
     // MARK: - Date Component Accessors
     
     /// Returns the year as an Int.
@@ -166,5 +165,4 @@ extension Date {
         dateFormatter.dateFormat = format
         return dateFormatter.date(from: string)!
     }
-    
 }

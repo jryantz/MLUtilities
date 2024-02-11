@@ -9,7 +9,6 @@ import XCTest
 @testable import MLUtilities
 
 final class DateTests: XCTestCase {
-    
     func testConversion() {
         let dateString = "1995-02-16"
         let dateFormat = "yyyy-MM-dd"
@@ -56,5 +55,4 @@ final class DateTests: XCTestCase {
         let test = date.millisecondsSince1970
         XCTAssertEqual(test, 1599320700000)
     }
-    
 }
