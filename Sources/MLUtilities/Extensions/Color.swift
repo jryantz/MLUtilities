@@ -26,7 +26,7 @@ import AppKit
 extension Color {
     var nsColor: NSColor { .init(self) }
     
-    var rgba: RGBA? {
+    var rgba: RGBA {
         return nsColor.rgba
     }
 }
