@@ -8,9 +8,9 @@
 #if canImport(UIKit)
 import UIKit
 
-extension UIScreen {
+public extension UIScreen {
     
-    var screenSize: CGSize {
+    public var screenSize: CGSize {
         
         let screenWidth = self.bounds.size.width
         let screenHeight = self.bounds.size.height

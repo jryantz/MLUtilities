@@ -11,10 +11,10 @@ import SwiftUI
 #if canImport(UIKit)
 import UIKit
 
-extension Color {
-    var uiColor: UIColor { .init(self) }
+public extension Color {
+    public var uiColor: UIColor { .init(self) }
     
-    var rgba: RGBA {
+    public var rgba: RGBA {
         return uiColor.rgba
     }
 }
@@ -23,17 +23,17 @@ extension Color {
 #if canImport(AppKit)
 import AppKit
 
-extension Color {
-    var nsColor: NSColor { .init(self) }
+public extension Color {
+    public var nsColor: NSColor { .init(self) }
     
-    var rgba: RGBA {
+    public var rgba: RGBA {
         return nsColor.rgba
     }
 }
 #endif
 
-extension Color {    
-    var hexaRGB: String? {
+public extension Color {
+    public var hexaRGB: String? {
         let (red, green, blue, _) = rgba
         return String(format: "#%02x%02x%02x",
             Int(red * 255),
@@ -41,7 +41,7 @@ extension Color {
             Int(blue * 255))
     }
     
-    var hexaRGBA: String? {
+    public var hexaRGBA: String? {
         let (red, green, blue, alpha) = rgba
         return String(format: "#%02x%02x%02x%02x",
             Int(red * 255),

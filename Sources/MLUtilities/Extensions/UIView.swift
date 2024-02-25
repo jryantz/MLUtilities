@@ -8,9 +8,9 @@
 #if canImport(UIKit)
 import UIKit
 
-extension UIView {
+public extension UIView {
     
-    enum Corners {
+    public enum Corners {
         
         case all
         case top
@@ -31,7 +31,7 @@ extension UIView {
     }
     
     // Add round corners to a specific location.
-    func roundCorners(_ corners: Corners, radius: CGFloat) {
+    public func roundCorners(_ corners: Corners, radius: CGFloat) {
         
         var cornerMasks = [CACornerMask]()
         

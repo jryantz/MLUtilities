@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Date {
+public extension Date {
     // MARK: - Date Component Accessors
     
     /// Returns the year as an Int.
@@ -15,7 +15,7 @@ extension Date {
     /// ```
     /// Date("2021-06-19") -> 2021
     /// ```
-    var year: Int {
+    public var year: Int {
         return Calendar.current.component(.year, from: self)
     }
     
@@ -24,7 +24,7 @@ extension Date {
     /// ```
     /// Date("2021-06-19") -> 6
     /// ```
-    var month: Int {
+    public var month: Int {
         return Calendar.current.component(.month, from: self)
     }
     
@@ -33,17 +33,17 @@ extension Date {
     /// ```
     /// Date("2021-06-19") -> 19
     /// ```
-    var date: Int {
+    public var date: Int {
         return Calendar.current.component(.day, from: self)
     }
     
     /// Returns the first moment of a given Date, as a Date.
-    var startOfDay: Date {
+    public var startOfDay: Date {
         return Calendar.current.startOfDay(for: self)
     }
     
     /// Returns the first moment of the day following a given Date, as a Date.
-    var startOfNextDay: Date {
+    public var startOfNextDay: Date {
         let calendar = Calendar.current
         let nextDay = calendar.date(byAdding: .day, value: 1, to: self)
         return calendar.startOfDay(for: nextDay!)
@@ -56,7 +56,7 @@ extension Date {
     ///
     /// The weekday units are one-based. For Gregorian and ISO 8601 
     /// calendars, `1` is Sunday.
-    var startOfWeek: Date {
+    public var startOfWeek: Date {
         let calendar = Calendar.current
         var components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)
         components.weekday = calendar.firstWeekday
@@ -72,7 +72,7 @@ extension Date {
     ///
     /// The weekday units are one-based. For Gregorian and ISO 8601 
     /// calendars, `1` is Sunday.
-    var startOfNextWeek: Date {
+    public var startOfNextWeek: Date {
         let calendar = Calendar.current
         let nextMonth = calendar.date(byAdding: .weekOfYear, value: 1, to: startOfWeek)
         return calendar.startOfDay(for: nextMonth!)
@@ -80,7 +80,7 @@ extension Date {
     
     /// Returns the first moment of the first day of the month of a given Date, 
     /// as a Date.
-    var startOfMonth: Date {
+    public var startOfMonth: Date {
         let calendar = Calendar.current
         var components = calendar.dateComponents([.calendar, .year, .month], from: self)
         components.day = 1
@@ -90,20 +90,20 @@ extension Date {
     
     /// Returns the first moment of the first day of the next month of a given Date,
     /// as a Date.
-    var startOfNextMonth: Date {
+    public var startOfNextMonth: Date {
         let calendar = Calendar.current
         let nextMonth = calendar.date(byAdding: .month, value: 1, to: startOfMonth)
         return calendar.startOfDay(for: nextMonth!)
     }
     
-    var startOfPreviousMonth: Date {
+    public var startOfPreviousMonth: Date {
         let calendar = Calendar.current
         let previousMonth = calendar.date(byAdding: .month, value: -1, to: startOfMonth)
         return calendar.startOfDay(for: previousMonth!)
     }
     
     /// Returns one month prior to the current Date, as a Date.
-    static var oneMonthAgo: Date {
+    public static var oneMonthAgo: Date {
         let calendar = Calendar.current
         let oneMonth = calendar.date(byAdding: .month, value: -1, to: Date())
         return calendar.startOfDay(for: oneMonth!)
@@ -111,7 +111,7 @@ extension Date {
     
     /// Returns the first moment of the first day of the year of a given Date,
     /// as a Date.
-    var startOfYear: Date {
+    public var startOfYear: Date {
         let calendar = Calendar.current
         var components = calendar.dateComponents([.calendar, .year], from: self)
         components.month = 1
@@ -122,14 +122,14 @@ extension Date {
     
     /// Returns the first moment of the first day of the next year of a given Date,
     /// as a Date.
-    var startOfNextYear: Date {
+    public var startOfNextYear: Date {
         let calendar = Calendar.current
         let nextYear = calendar.date(byAdding: .year, value: 1, to: startOfYear)
         return calendar.startOfDay(for: nextYear!)
     }
     
     /// The time in milliseconds between the date value and 00:00:00 UTC on 1 January 1970.
-    var millisecondsSince1970: Int {
+    public var millisecondsSince1970: Int {
         let ms = self.timeIntervalSince1970 * 1000.0
         return Int(ms.rounded())
     }
@@ -188,7 +188,7 @@ extension Date {
     /// - Parameter format: The output format.
     /// - Returns: A string representation of `Date`.
     ///
-    func string(_ format: String = "yyyy-MM-dd") -> String {
+    public func string(_ format: String = "yyyy-MM-dd") -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
@@ -250,7 +250,7 @@ extension Date {
     ///   - format: The format of the provided date string.
     /// - Returns: A date object based on the provided string.
     ///
-    static func parse(_ string: String, format: String = "yyyy-MM-dd") -> Date {
+    public static func parse(_ string: String, format: String = "yyyy-MM-dd") -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = NSTimeZone.default
         dateFormatter.dateFormat = format
