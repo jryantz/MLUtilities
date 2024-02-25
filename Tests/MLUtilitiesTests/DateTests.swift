@@ -93,6 +93,12 @@ final class DateTests: XCTestCase {
         XCTAssertEqual(testDate.startOfNextMonth, expectedDate)
     }
     
+    func testStartOfPreviousMonth() {
+        let testDate = Date.parse("2020-09-05 11:45:00", format: "yyyy-MM-dd HH:mm:ss")
+        let expectedDate = Date.parse("2020-08-01 00:00:00", format: "yyyy-MM-dd HH:mm:ss")
+        XCTAssertEqual(testDate.startOfPreviousMonth, expectedDate)
+    }
+    
     func testStartOfYear() {
         let testDate = Date.parse("2020-09-05 11:45:00", format: "yyyy-MM-dd HH:mm:ss")
         let expectedDate = Date.parse("2020-01-01 00:00:00", format: "yyyy-MM-dd HH:mm:ss")

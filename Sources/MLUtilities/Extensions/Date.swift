@@ -96,6 +96,12 @@ extension Date {
         return calendar.startOfDay(for: nextMonth!)
     }
     
+    var startOfPreviousMonth: Date {
+        let calendar = Calendar.current
+        let previousMonth = calendar.date(byAdding: .month, value: -1, to: startOfMonth)
+        return calendar.startOfDay(for: previousMonth!)
+    }
+    
     /// Returns one month prior to the current Date, as a Date.
     static var oneMonthAgo: Date {
         let calendar = Calendar.current
