@@ -49,6 +49,13 @@ public extension Date {
         return calendar.startOfDay(for: nextDay!)
     }
     
+    /// Returns the first moment of the day prior to the given Date, as a Date.
+    public var startOfPreviousDay: Date {
+        let calendar = Calendar.current
+        let previousDay = calendar.date(byAdding: .day, value: -1, to: self)
+        return calendar.startOfDay(for: previousDay!)
+    }
+    
     /// Returns the first moment of the first weekday of a given Date, as a Date.
     ///
     /// The default value of `firstWeekday` varies by calendar and locale. Your 

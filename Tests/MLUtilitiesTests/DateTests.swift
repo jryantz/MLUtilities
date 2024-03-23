@@ -41,6 +41,12 @@ final class DateTests: XCTestCase {
         XCTAssertEqual(testDate.startOfNextDay, expectedDate)
     }
     
+    func testStartOfPreviousDay() {
+        let testDate = Date.parse("2020-09-05 11:45:00", format: "yyyy-MM-dd HH:mm:ss")
+        let expectedDate = Date.parse("2020-09-04 00:00:00", format: "yyyy-MM-dd HH:mm:ss")
+        XCTAssertEqual(testDate.startOfPreviousDay, expectedDate)
+    }
+    
     func testStartOfWeekForSunday() {
         if Calendar.current.firstWeekday != 1 {
             return XCTAssertTrue(true)
